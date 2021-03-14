@@ -37,7 +37,7 @@
   {% for recipe in recipes %}
   <div class="result">
     <a href="{% url 'recipe' pk=recipe.pk %}">
-      <img src="/{{ recipe.image }}">
+      <img src="/media/{{ recipe.image }}">
       <p>{{ recipe.menu }}</p>
     </a>
   </div>
