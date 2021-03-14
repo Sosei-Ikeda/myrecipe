@@ -3,10 +3,13 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title></title>
+  <title>{{ recipe.menu }} 【マイレシピ】</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
-  <link rel="icon" href="img/favicon.ico" type="image/vnd.microsoft.icon">
+  <link rel="apple-touch-icon" type="image/png" href="{% static "img/apple-touch-icon-180x180.png" %}">
+  <link rel="icon" type="image/png" href="{% static "img/icon-192x192.png" %}">
+  <link rel="icon" type="image/vnd.microsoft.icon" href="{% static "img/favicon.ico" %}">
 </head>
 
 <body>
