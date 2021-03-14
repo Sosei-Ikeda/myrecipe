@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="icon" href="img/favicon.ico" type="image/vnd.microsoft.icon">
+</head>
+
+<body>
+  <header>
+    <a class="logo" href="{% url 'index' %}">マイレシピ</a>
+  </header>
+  <h1>レシピ検索</h1>
+  <div id="wrapper">
+    <form>
+      <p><span class="title">メニュー名</span><span class="tag"><input type="text" name="menu" placeholder="" size="25" value="{{ menu }}"></span></p>
+      <p><span class="title">材料</span><span class="tag"><input type="text" name="ingredient" placeholder="" size="25" value="{{ ingredient }}"></span></p>
+      <p><span class="title">分類</span><span class="tag"><input type="radio" name="gen" id="g1" value="1" {% if gen == "1" %}checked{% else %}{% endif %}><label for="g1">麺</label><input type="radio" name="gen" id="g2" value="2" {% if gen == "2" %}checked{% else %}{% endif %}><label for="g2">丼</label><input type="radio" name="gen" id="g3" value="3" {% if gen == "3" %}checked{% else %}{% endif %}><label for="g3">主</label><input type="radio" name="gen" id="g4" value="4" {% if gen == "4" %}checked{% else %}{% endif %}><label for="g4">副</label><input type="radio" name="gen" id="g5" value="5" {% if gen == "5" %}checked{% else %}{% endif %}><label for="g5">汁</label></span></p>
+      <p><span class="title">国</span><span class="tag"><input type="radio" name="cou" id="c1" value="1" {% if cou == "1" %}checked{% endif %}><label for="c1">和</label><input type="radio" name="cou" id="c2" value="2" {% if cou == "2" %}checked{% endif %}><label for="c2">洋</label><input type="radio" name="cou" id="c3" value="3" {% if cou == "3" %}checked{% endif %}><label for="c3">中</label><input type="radio" name="cou" id="c4" value="4" {% if cou == "4" %}checked{% endif %}><label for="c4">伊</label><input type="radio" name="cou" id="c5" value="5" {% if cou == "5" %}checked{% endif %}><label for="c5">他</label></span></p>
+      <p><span class="title">疲</span><span class="tag"><input type="radio" name="dif" id="d1" value="1" {% if dif == "1" %}checked{% endif %}><label for="d1">楽々</label><input type="radio" name="dif" id="d2" value="2" {% if dif == "2" %}checked{% endif %}><label for="d2">普通</label><input type="radio" name="dif" id="d3" value="3" {% if dif == "3" %}checked{% endif %}><label for="d3">大変</label></span></p>
+      <input type="submit" id="sbut" value="検索" />
+    </form>
+  </div>
+  <br>
+  <h1>検索結果</h1>
+  {% for recipe in recipes %}
+  <div class="result">
+    <a href="{% url 'recipe' pk=recipe.pk %}">
+      <img src="/{{ recipe.image }}">
+      <p>{{ recipe.menu }}</p>
+    </a>
+  </div>
+  {% endfor %}
+</body>
+
+</html>

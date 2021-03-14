@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="icon" href="img/favicon.ico" type="image/vnd.microsoft.icon">
+</head>
+
+<body>
+  <header>
+    <a class="logo" href="{% url 'index' %}">マイレシピ</a>
+  </header>
+  <h1>{{ recipe.menu }}</h1>
+  <div class="recipe">
+    <img src="/{{ recipe.image.url }}">
+    <h2>材料(2人前)</h2>
+    <ul>
+      {% for ingredient in ingredients %}
+        <li>{{ ingredient }}</li>
+      {% endfor %}
+    </ul>
+    <h2>手順</h2>
+    <ol>
+      {% for procedure in procedures %}
+        <li>{{ procedure }}</li>
+      {% endfor %}
+    </ol>
+    <p>
+      <span class="tag tag2">
+        <label>
+          {% if recipe.genre == 1 %}麺
+          {% elif recipe.genre == 2 %}丼
+          {% elif recipe.genre == 3 %}主
+          {% elif recipe.genre == 4 %}副
+          {% elif recipe.genre == 5 %}汁
+          {% else %}E
+          {% endif %}
+        </label>
+        <label>
+          {% if recipe.country == 1 %}和
+          {% elif recipe.country == 2 %}洋
+          {% elif recipe.country == 3 %}中
+          {% elif recipe.country == 4 %}伊
+          {% elif recipe.country == 5 %}他
+          {% else %}E
+          {% endif %}
+        </label>
+        <label>
+          {% if recipe.difficulty == 1 %}楽々
+          {% elif recipe.difficulty == 2 %}普通
+          {% elif recipe.difficulty == 3 %}大変
+          {% else %}E
+          {% endif %}
+        </label>
+      </span>
+      <span class="update">{{ recipe.published_date }}</span>
+    </p>
+    <p>参考：<a target="_blank" href="{{ recipe.link }}">{{ recipe.link }}</a></p>
+  </div>
+</body>
+
+</html>
