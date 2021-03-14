@@ -176,14 +176,14 @@ li {
     float: none;
   }
   .result p {
-    font-size: 4vw;
+    font-size: 6vw;
     margin: 3vw 0 10vw 0;
     width: 90vw;
   }
 
   ul, ol {
-    padding: 0 10vw;
-    width: 80vw;
+    padding: 0 6vw 0 10vw;
+    width: 84vw;
     float: none;
     text-align: center;
   }
