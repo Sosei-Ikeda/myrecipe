@@ -13,7 +13,7 @@ def index(request):
     gen = NoneCheck(request.GET.get('gen'))
     cou = NoneCheck(request.GET.get('cou'))
     dif = NoneCheck(request.GET.get('dif'))
-    recipes = Recipe.objects.all()
+    recipes = Recipe.objects.all().order_by('-published_date')
     if menu != "":
         recipes = recipes.filter(menu__icontains=menu)
     if ingredients != []:
